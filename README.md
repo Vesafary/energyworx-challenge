@@ -1,12 +1,15 @@
 # Energyworx coding assignment
 
-I used a simple Django service + PostgreSQL for this challenge, since it's fairly simple to setup. To make it easy to run, it will run via `Docker`/`docker-compose`. While in this folder, simply run `docker-compose up` to start it up. \n
-\n
-Relevant views are found in `application/core/views.py`. \n
-Relevant urls are found in `application/core/urls.py`. \n
-Relevant models are found in `application/core/models.py`. \n
-Tests are found in `tests/views`. \n
-\n
+I used a simple Django service + PostgreSQL for this challenge, since it's fairly simple to setup. To make it easy to run, it will run via `Docker`/`docker-compose`. While in this folder, simply run `docker-compose up` to start it up.
+
+Relevant views are found in `application/core/views.py`.
+
+Relevant urls are found in `application/core/urls.py`.
+
+Relevant models are found in `application/core/models.py`.
+
+Tests are found in `tests/views`.
+
 As I don't have a mac, that part is untested. However, since it runs in Docker, it should work without issues. For M1/M2 devices, the added `platform` tags in docker-compose should make sure everything behaves. 
 
 ## Tests
