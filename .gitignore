@@ -1,6 +1,6 @@
-application/__pycache__
-application/core/__pycache__
-application/core/migrations/__pycache__
+__pycache__
+*.pyc
+*.pyo
 
 cicd/docker/media/*
 cicd/docker/psql/*

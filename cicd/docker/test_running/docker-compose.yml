@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  test:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile
+    environment:
+      - "DJANGO_SETTINGS_MODULE=application.settings.test"
+    platform: linux/amd64
+    entrypoint: entrypoint/entrypoint-test.sh
+    ports:
+      - "127.0.0.1:5556:5555"
+    volumes:
+      - ../../../:/code
+      - ./entrypoint:/entrypoint
+    userns_mode: 'host'
