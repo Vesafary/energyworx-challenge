@@ -1,17 +1,18 @@
 # Energyworx coding assignment
 
-
-This project uses `Docker`/`docker-compose` to run. While in this folder, simply run
-`docker-compose up`
-
-Relevant views are found in `application/core/views.py`
-Relevant urls are found in `application/core/urls.py`
-Relevant models are found in `application/core/models.py`
+I used a simple Django service + PostgreSQL for this challenge, since it's fairly simple to setup. To make it easy to run, it will run via `Docker`/`docker-compose`. While in this folder, simply run `docker-compose up` to start it up. \n
+\n
+Relevant views are found in `application/core/views.py`. \n
+Relevant urls are found in `application/core/urls.py`. \n
+Relevant models are found in `application/core/models.py`. \n
+Tests are found in `tests/views`. \n
+\n
+As I don't have a mac, that part is untested. However, since it runs in Docker, it should work without issues. For M1/M2 devices, the added `platform` tags in docker-compose should make sure everything behaves. 
 
 ## Tests
 To run tests, cd to `cicd/docker/test_running` and execute `docker-compose up --remove-orphans --build --abort-on-container-exit`
 
-Currently, due to some weird behaviour I haven't encountered before, it's not possible to run all the tests at once, so I run them for each test file separately.
+Currently, due to some weird behaviour I haven't encountered before, it's not possible to run all the tests at once, so I run them for each test file separately. If I have some time I'll take a look (mostly for performance and terminal output it would be an improvement), but at least it's functional.
 
 ## Functionality:
 
