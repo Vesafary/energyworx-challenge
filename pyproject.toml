@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "energyworx-challenge"
+version = "0.0.1"
+description = ""
+authors = ["Thomas Veldman <com@thomasveldman.nl>"]
+include = ["manage.py"]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+# DJANGO
+django = "4.0.6"
+
+# DB
+psycopg2-binary = "2.8.5"  # Postgres client
+
+requests = "2.25.1"
+django-cors-headers = "^3.7.0"
+django-extensions = "^3.1.1"
+
+[tool.poetry.dev-dependencies]
+django-debug-toolbar = "3.2.1"
+django-debug-toolbar-template-profiler = "2.0.1"
+django-debug-toolbar-template-timings = "0.9"
+django-querycount = "0.7.0"
+nplusone = "1.0.0"
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

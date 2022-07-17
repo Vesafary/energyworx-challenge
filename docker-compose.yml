@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: web
+    platform: linux/amd64
+    stop_signal: SIGKILL
+    environment:
+      - "DB_HOST=${DB_HOST:-database}"
+      - "DB_PORT=${DB_PORT:-5432}"
+      - "DB_DATABASE=${DB_DATABASE:-test}"
+      - "DB_USER=${DB_USER:-test}"
+      - "DB_PASSWORD=${DB_PASSWORD:-unsafe}"
+      - "DJANGO_SETTINGS_MODULE=application.settings"
+      - "CQLENG_ALLOW_SCHEMA_MANAGEMENT='True'"
+    entrypoint: /entrypoint/entrypoint.sh
+    ports:
+      # Use .env to override ports
+      - "127.0.0.1:${DJANGO_PORT:-8000}:8000"
+    volumes:
+      - ./cicd/docker/web:/entrypoint
+      - ./cicd/docker/media:/media
+      - ./application:/application
+    depends_on:
+      # Generic database name so we can easily switch database type
+      - database
+#    user: "${UID}:${GID}"
+#    userns_mode: "host" # ensure that the container runs as root when user_ns mapping is used
+
+  database:
+    image: postgres:12
+    environment:
+      - "POSTGRES_USER=${POSTGRES_USER:-docker}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-docker}"
+      - "POSTGRES_DATABASE=${POSTGRES_DATABASE:-docker}"
+      - "DB_USER=${DB_USER:-test}"
+      - "DB_PASSWORD=${DB_PASSWORD:-unsafe}"
+      - "DB_DATABASE=${DB_DATABASE:-test}"
+    expose:
+      - "${DB_PORT:-5432}"
+    volumes:
+      - ./cicd/docker/psql/data:/var/lib/postgresql/data:rw
+      - ./cicd/docker/web/postgres_initdb.d:/docker-entrypoint-initdb.d
+    command: "-p ${DB_PORT:-5432}"
+#    user: "${UID}:${GID}"
+#    userns_mode: "host" # ensure that the container runs as root when user_ns mapping is used

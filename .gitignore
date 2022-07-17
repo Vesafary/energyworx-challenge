@@ -1,0 +1,6 @@
+application/__pycache__
+application/core/__pycache__
+application/core/migrations/__pycache__
+
+cicd/docker/media/*
+cicd/docker/psql/*
