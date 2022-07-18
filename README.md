@@ -15,7 +15,7 @@ As I don't have a mac, that part is untested. However, since it runs in Docker, 
 ## Tests
 To run tests, cd to `cicd/docker/test_running` and execute `docker-compose up --remove-orphans --build --abort-on-container-exit`
 
-Currently, due to some weird behaviour I haven't encountered before, it's not possible to run all the tests at once, so I run them for each test file separately. If I have some time I'll take a look (mostly for performance and terminal output it would be an improvement), but at least it's functional.
+Currently, due to some weird behaviour I haven't encountered before, it's not possible to run tests on all the test files at once, so in the script I run tests multiple times (for each test file separately). This makes it a bit slower and adds terminal output, so if I have some time I'll take a look to fix.
 
 ## Functionality:
 
