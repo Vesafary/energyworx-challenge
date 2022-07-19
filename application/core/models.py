@@ -25,7 +25,11 @@ class ShortUrl(models.Model):
 
     @staticmethod
     def generate_code() -> str:
-        return ''.join(random.choice(valid_characters) for _ in range(6))
+        exists = True
+        while exists:
+            code = ''.join(random.choice(valid_characters) for _ in range(6))
+            exists = ShortUrl.objects.filter(short=code).exists()
+        return code
 
     @staticmethod
     def shortcode_is_valid(input: str) -> bool:
